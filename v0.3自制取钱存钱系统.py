@@ -142,7 +142,7 @@ def menu():
         if pick_input == 1:
             login()
         elif pick_input == 2:
-            sign_in()
+            signin()
         else:
             print("不能输入无效的字符")
             continue
