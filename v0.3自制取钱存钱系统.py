@@ -1,6 +1,14 @@
 #####################################作者:丁真(化名)######################################################################
+def sign_in():
+    pwd_input1=input("请输入您要注册的密码:\n")
+    pwd_input2=input("请确认您要注册的密码\n")
+    if pwd_input1==pwd_input2:
+        global pwd
+        pwd=pwd_input1
+    elif pwd_input1!=pwd_input2:
+        print("前后密码不一致！")
+        exit()
 
-pwd= "admin"
 
 account={
     "name":"丁真",
@@ -111,21 +119,43 @@ transaction=[]
 
 
 
+def login():
+    for _ in range(3):
+        input_pwd=input("请输入您的密码:\n")
+        if input_pwd == pwd:
+            print("登录成功！")
+            load()
+        else:
+            print("密码错误！")
+            continue
+    print("登录失败，请稍后再试！")
+    exit()
 
-for _ in range(3):
-    input_pwd=input("请输入您的密码:\n")
-    if input_pwd == pwd:
-        print("登录成功！")
-        load()
-    else:
-        print("密码错误！")
-        continue
-print("登录失败，请稍后再试！")
-exit()
+def menu():
+    while True:
+        print("1、登录")
+        print("2、注册")
+        try:
+            pick_input = int(input("输入你要选择的功能:"))
+        except ValueError:
+            raise ValueError("只能是1或者2")
+        if pick_input == 1:
+            login()
+        elif pick_input == 2:
+            sign_in()
+        else:
+            print("不能输入无效的字符")
+            continue
 
-
+if __name__ == "__main__":
+    menu()
 '''v0.2更新内容:
 1、解决了存钱取钱输入字符串报错导致系统崩溃的问题
 2、增加了校验环节,增强了程序的稳定性
 3、解决了在执行功能时输入字符串报错导致系统崩溃的问题
 '''
+
+"""v0.3更新内容:
+1、更新了注册系统
+2、优化了代码结构
+"""
